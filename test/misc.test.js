@@ -68,3 +68,11 @@ test('media: silent mode estimates duration from size; fake-duration overrides; 
   await assert.rejects(down.load('http://h/y.mp3'))
   assert.ok(logs.some(([t, m]) => t === 'FETCH-ERR' && m.includes('ECONNREFUSED')))
 })
+
+test('byteOffsetFor maps seconds to a proportional byte offset', async () => {
+  const { byteOffsetFor } = await import('../src/player/audioOutput.js')
+  assert.equal(byteOffsetFor(1000, 50, 100), 500)
+  assert.equal(byteOffsetFor(1000, 0, 100), 0)
+  assert.equal(byteOffsetFor(1000, 10, 0), 0)
+  assert.equal(byteOffsetFor(1000, 500, 100), 1000)
+})

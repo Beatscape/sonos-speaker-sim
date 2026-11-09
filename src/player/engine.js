@@ -99,7 +99,7 @@ export class PlayerEngine extends EventEmitter {
   #beginAt(sec) {
     this.posBase = sec
     this.t0 = this.frozen ? null : this.clock.now()
-    this.audio.start(this.track?.file, sec, this.volume)
+    this.audio.start(this.track?.file, sec, this.volume, this.duration)
     if (this.frozen) this.audio.pause()
     this.#setTransport('PLAYING')
   }
@@ -191,7 +191,7 @@ export class PlayerEngine extends EventEmitter {
     this.posBase = sec
     this.t0 = playing && !this.frozen ? this.clock.now() : null
     if (playing) {
-      this.audio.start(this.track?.file, sec, this.volume)
+      this.audio.start(this.track?.file, sec, this.volume, this.duration)
       if (this.frozen) this.audio.pause()
     }
   }
