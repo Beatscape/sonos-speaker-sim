@@ -1,0 +1,27 @@
+{
+  "name": "sonos-speaker-sim",
+  "version": "0.1.0",
+  "description": "A fake Sonos speaker for testing UPnP/Sonos controller apps without hardware: SSDP discovery, SOAP transport/volume/topology, real-clock playback and fault injection.",
+  "type": "module",
+  "bin": {
+    "sonos-sim": "bin/sonos-sim.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "start": "node bin/sonos-sim.js",
+    "test": "node --test",
+    "lint": "node --check bin/sonos-sim.js && node --check src/cli.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": ["sonos", "upnp", "dlna", "ssdp", "simulator", "mock", "testing"],
+  "license": "MIT"
+}
